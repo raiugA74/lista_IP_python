@@ -1,15 +1,61 @@
-def frac(N):
-    if N == 0:
-        return 1.0,1.0 #CASO BASE
+def fatorial(n):
+    if (n == 0):
+        return 1
     else:
-        indice, acumulada = frac(N-1)/(), 
-        return frac(N/(N + 2)),
+        return n * fatorial(n-1)
 
-print('SISTEMA DE CALIBRAGEM DA ÁRVORE QUÂNTICA DE NATAL')
-print('Oficina Central do Papai Noel - Setor de Engenharia Fractal v1.0\n')
-print('[INFO] Carregando protocolos de recursão dos duendes...')
-print('\n[INFO] Conectando ao gerador de auroras boreais...\n')
+def mdc(a, b):
+    if b == 0:
+        return a #caso base
+    else:
+        return mdc(b, a % b) #passo recursivo, chama o mdc com (b, resto) euclides by nivan
 
-n = int(input())
-print(f'[PROCESSANDO] Calculando as camadas fractais para o nível {n}...')
-print(f'[AGUARDE] Desdobrando a pilha de recursão no núcleo do cristal...\n')
+def potencia(base, exp):
+    if exp == 0:
+        return 1  #caso base
+    return base * potencia(base, exp - 1)  #passo recursivo
+
+#entradas
+valor_duendes = int(input())
+valor_elfos = int(input())
+
+#fatorial
+prod_duendes = fatorial(valor_duendes) #produções
+prod_elfos = fatorial(valor_elfos)
+
+if prod_duendes > prod_elfos: 
+    print("Os duendes se superaram dessa vez.")
+elif prod_elfos > prod_duendes:
+    print("É, os elfos tiveram um resultado melhor.")
+else:   
+    print("Ué, houve um empate.")
+
+#MDC
+tamanho_caixa = mdc(prod_duendes, prod_elfos)
+
+if tamanho_caixa > 10:
+    print("Caixas gigantes! O Papai Noel vai precisar de um guindaste para empacotar tudo.")
+else:
+    print("Caixas compactas e organizadas perfeitamente.")
+
+#divisor de estabilidade
+divisor_estabilidade = ((prod_duendes + prod_elfos) // 2) + tamanho_caixa
+
+if divisor_estabilidade > 50:
+    print("Atenção: O divisor de estabilidade está altíssimo!")
+else:
+    print("Divisor calculado com sucesso. A rampa está equilibrada.")
+
+#verificação do lançamento
+print("Calculando a inclinação geométrica do canhão...")
+
+cateto1_sq = potencia(prod_duendes, 2)
+cateto2_sq = potencia(prod_elfos, 2)
+hipotenusa_geometrica = cateto1_sq + cateto2_sq
+
+if hipotenusa_geometrica % divisor_estabilidade != 0:
+    print("Lançamento autorizado!")
+else:
+    print("Lançamento não autorizado!")
+
+

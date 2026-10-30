@@ -1,61 +1,40 @@
-def fatorial(n):
-    if (n == 0):
-        return 1
+def combinacoes(n, k):
+    # casos basee 
+    if k == 0 or k == n: 
+        return 1 #combinação para k=0 será 1, mesma coisa para k=n, ideia do triangulo de pascal, por isso suas pontas são 1, de inicio (n 0) 
+    elif k > n or k < 0: 
+        return 0 #combinação para qualquer k>0 ou k sendo negativo...será 0 o resultado
     else:
-        return n * fatorial(n-1)
+    # relação recursiva de Stifel
+        return combinacoes(n - 1, k - 1) + combinacoes(n - 1, k)
 
-def mdc(a, b):
-    if b == 0:
-        return a #caso base
-    else:             #resto
-        return mdc(b, a % b) #passo recursivo, chama o mdc com (b, resto) euclides by nivan
+qtd_setores = int(input()) #leitura
+minimo_possibilidades = int(input())
+resultados = []
 
-def potencia(base, exp):
-    if exp == 0:
-        return 1  #caso base
-    return base * potencia(base, exp - 1)  #passo recursivo
+for _ in range(qtd_setores): #leitura dos setores e processamemnto
+    n = int(input())
+    k = int(input())
 
-#entradas
-valor_duendes = int(input())
-valor_elfos = int(input())
+    possibilidades = combinacoes(n, k) #fzr a combinação, conjuntos, tanto que no texto fala que a ordem não importa, estrela e sino = sino e estrela
+    resultados.append(possibilidades)   
 
-#fatorial
-prod_duendes = fatorial(valor_duendes) #produções
-prod_elfos = fatorial(valor_elfos)
+print("Relatório dos escudos de Norte:")
+aprovados = 0
 
-if prod_duendes > prod_elfos: 
-    print("Os duendes se superaram dessa vez.")
-elif prod_elfos > prod_duendes:
-    print("É, os elfos tiveram um resultado melhor.")
-else:   
-    print("Ué, houve um empate.")
+for i in range(len(resultados)): #percorrer a lista de resultados p acompanhar o numero do setor
+    possibilidades = resultados[i]
+    numero_setor = i + 1
 
-#MDC
-tamanho_caixa = mdc(prod_duendes, prod_elfos)
+    if possibilidades >= minimo_possibilidades:
+        print(f"Setor {numero_setor}: {possibilidades} possibilidade(s). Variedade suficiente!")
+        aprovados += 1
+    else:
+        print(f"Setor {numero_setor}: {possibilidades} possibilidade(s). Precisa de mais alternativas!")
 
-if tamanho_caixa > 10:
-    print("Caixas gigantes! O Papai Noel vai precisar de um guindaste para empacotar tudo.")
+#resumo final
+print(f'Setores que atingiram a meta: {aprovados} de {qtd_setores}.')
+if aprovados == qtd_setores:
+    print('Tudo pronto! O planejamento dos escudos foi aprovado!')
 else:
-    print("Caixas compactas e organizadas perfeitamente.")
-
-#divisor de estabilidade
-divisor_estabilidade = ((prod_duendes + prod_elfos) // 2) + tamanho_caixa
-
-if divisor_estabilidade > 50:
-    print("Atenção: O divisor de estabilidade está altíssimo!")
-else:
-    print("Divisor calculado com sucesso. A rampa está equilibrada.")
-
-#verificação do lançamento
-print("Calculando a inclinação geométrica do canhão...")
-
-cateto1_sq = potencia(prod_duendes, 2)
-cateto2_sq = potencia(prod_elfos, 2)
-hipotenusa_geometrica = cateto1_sq + cateto2_sq
-
-if hipotenusa_geometrica % divisor_estabilidade != 0:
-    print("Lançamento autorizado!")
-else:
-    print("Lançamento não autorizado!")
-
-
+    print('Norte precisa revisar o planejamento!')
