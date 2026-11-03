@@ -1,4 +1,3 @@
-#questão de FUNÇÕES ZAGREW
 print('O portão se abre diante de você, revelando o caminho para o Submundo. Uma nova tentativa começa agora.\n')
 inventário_bencaos = []
 
@@ -6,7 +5,7 @@ inventário_bencaos = []
 def bencaos(lista_bencaos_atual):
     
     combinadas = []
-    deuses = ['AFRODITE' ,'ARES','ARTEMIS','ATENA','DEMETER','DIONISIO','HERMES','POSEIDON','ZEUS']
+    deuses = ['AFRODITE','ARES','ARTEMIS','ATENA','DEMETER','DIONISIO','HERMES','POSEIDON','ZEUS']
     cabousse = False
     while (not cabousse): 
       deus = input()
