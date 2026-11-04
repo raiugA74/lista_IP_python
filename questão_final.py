@@ -100,7 +100,7 @@ print(f'Gostosura: {gostosura}')
 if gostosura < 0:
     print('Nem o Grinch teria Coragem de provar esse Biscoito!')
 elif gostosura == 0:
-    if total_enfeites ==0:
+    if total_enfeites == 0:
         print('A Magia do Biscoito se Anulou.')
     else:
         print('Tanta Decoração para nada! A Magia do Biscoito se Anulou.')
