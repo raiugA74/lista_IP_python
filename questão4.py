@@ -49,7 +49,7 @@ def tartaro(inventario):
  
  prisioneiros = input().split(', ')
  tamanho = len(prisioneiros)
- #burocracia/bubblesort
+ # burocracia/bubblesort
  for i in range(tamanho):
         for j in range(tamanho - 1):
             if prisioneiros[j] > prisioneiros[j + 1]:
@@ -129,7 +129,6 @@ def asfodelo(inventario):
         print('Zagreu cai, derrotado mais uma vez. Seu corpo se desfaz, retornando ao lugar que conhece tão bem.')
 
     return venceu2, inventario
-
 
 def elisio(inventario):
     legado = 0

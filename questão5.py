@@ -121,7 +121,7 @@ for heroi in grupo:
     else:
         lista_formatada = []
         #se tiver itens..
-        for nome_item, status in inventario.items():#.items() pega o nome do item e os status
+        for nome_item, status in inventario.items():#.items() pega o nome do item e os status///chave e valor
             tipo = status['tipo']
             poder = status['poder']
 
