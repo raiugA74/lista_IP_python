@@ -159,7 +159,7 @@ def eh_jogada_valida(lo, co, ld, cd, jogador, tabuleiro): #retorna sim ou não p
             else:
                 return False
     #se passou por tudo....é porque REALMENTE é true e pode fazer
-    return True
+    return True 
 
 def caminho_livre(linha_atual, coluna_atual, ld, cd, tabuleiro, primeiro_passo=True):
     #se já chegou no destino, o caminho tava livre
